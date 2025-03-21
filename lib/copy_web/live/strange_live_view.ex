@@ -8,9 +8,18 @@ defmodule CopyWeb.StrangeViewLive do
     socket =
       assign(socket,
         questionnaire: [
-          %{id: "color", question: "favourite color?", form: to_form(%{"answer" => ""})},
-          %{id: "food", question: "favourite food?", form: to_form(%{"answer" => ""})},
-          %{id: "animal", question: "favourite animal?", form: to_form(%{"answer" => ""})}
+          %{
+            id: "color",
+            question: "favourite color?"
+          },
+          %{
+            id: "food",
+            question: "favourite food?"
+          },
+          %{
+            id: "animal",
+            question: "favourite animal?"
+          }
         ],
         answers: %{},
         evaluations: %{},
@@ -57,7 +66,7 @@ defmodule CopyWeb.StrangeViewLive do
         id={item.id}
         question={item.question}
         answer={Map.get(@answers, item.id, "")}
-        form={item.form}
+        form={to_form(%{"answer" => Map.get(@answers, item.id, "")}, id: item.id)}
         evaluation={Map.get(@evaluations, item.id, "")}
       />
     </main>
